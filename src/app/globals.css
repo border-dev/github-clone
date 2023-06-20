@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --borderWidth-thin: max(1px, 0.0625rem);
+  --color-border-default: #30363d;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section {
+  display: block;
+}
+
+.global-navbar-end {
+  @apply flex justify-end gap-2;
+  flex: 0 1 auto;
+}
+
+.global-action-menu::before {
+  display: block;
+  width: 1px;
+  height: 20px;
+  height: 20px;
+  content: '';
+  background: #30363d;
+  margin-block: calc((32px - 20px) / 2);
+}
+
+.global-navbar-end .user {
+  @apply relative rounded-[50%];
+  background-color: rgba(110, 118, 129, 0.4);
+}
+
+.header-shadow-b {
+  box-shadow: inset 0 calc(var(--borderWidth-thin, 1px) * -1)
+    var(--color-border-default);
+}
+
+.header-sidebar-btn {
+  @apply relative grid h-8 w-8 auto-cols-max items-center justify-center rounded-md border bg-transparent;
+  border-color: #30363d;
+}
+
+.btn--iconOnly {
+  @apply inline-grid w-8 place-content-center;
+  padding: unset;
+}
+
+.btn--secondary {
+  fill: #7d8590;
+  background-color: transparent;
+  border-color: rgba(240, 246, 252, 0.1);
+  box-shadow: 0 0 transparent;
+  color: #7d8590;
+}
+
+.Button {
+  align-items: center;
+  background-color: initial;
+  border: max(1px, 0.0625rem) solid;
+  border-color: #0000;
+  border-radius: 6px;
+  color: #c9d1d9;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: row;
+  font-size: 0.875rem;
+  font-weight: 500;
+  gap: 0.25rem;
+  height: 2rem;
+  justify-content: space-between;
+  min-width: max-content;
+  padding: 0 0.75rem;
+  position: relative;
+  text-align: center;
+  transition: 80ms cubic-bezier(0.65, 0, 0.35, 1);
+  transition-property: color, fill, background-color, border-color;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.Button.logo {
+  border: 0;
+  width: 32px;
+  height: 32px;
+  outline-offset: 2px;
+  padding: 0;
+}
+
+.Button--content {
+  align-items: center;
+  display: grid;
+  flex: 1 0 auto;
+  grid-template-areas: 'leadingVisual text trailingVisual';
+  grid-template-columns: min-content minmax(0, auto) min-content;
+  place-content: center;
+}
+
+.Button--label {
+  grid-area: text;
+  line-height: 1.42857;
+  white-space: nowrap;
+}
+
+header nav ul li {
+  flex: 0 1 max-content;
+  display: inline-grid;
+  grid-auto-flow: column;
+  align-items: center;
+}
+
+header nav ul li a {
+  width: 3ch;
+  line-height: calc(20 / 14);
+  padding-inline: 8px;
+  padding-block: 6px;
+}
+
+.dashboard-link {
+  margin-block: calc(8px * -1);
+  padding-block: 6px;
+  padding-inline: 8px;
+}
