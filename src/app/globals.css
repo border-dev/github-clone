@@ -4,8 +4,8 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-rgb: 2, 2, 8;
+  --color-btn-primary-text: 0, 0, 0;
   --borderWidth-thin: max(1px, 0.0625rem);
   --color-border-default: #30363d;
 }
@@ -13,19 +13,27 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-color: 0, 0, 0;
   }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: rgb(var(--background-rgb));
+}
+
+@layer components {
+  .sr-only {
+    @apply absolute h-1 w-1 overflow-hidden whitespace-normal border-0 p-0;
+  }
+
+  .btn {
+    @apply relative inline-block cursor-pointer select-none appearance-none whitespace-nowrap rounded-md border border-transparent px-1 py-4 align-middle text-sm;
+  }
+
+  .btn-primary {
+    @apply bg-green-700 text-white;
+  }
 }
 
 article,

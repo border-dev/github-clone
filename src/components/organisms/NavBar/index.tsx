@@ -1,9 +1,20 @@
-import Icon from '../../atoms/Icon';
-import Link from '../../modules/Link';
+'use client';
+
+import Icon from '@components/atoms/Icon';
+import Link from '@components/modules/Link';
+import { useSession } from 'next-auth/react';
+import Image from 'next/image';
+import { useState } from 'react';
 
 type NavBarProps = {};
 
 const NavBar = (props: NavBarProps) => {
+  const { data: session } = useSession();
+  const name = session?.user?.name;
+  const image = session?.user?.image;
+
+  const [isAvatarMenuOpen, setIsAvatarMenuOpen] = useState(false);
+
   return (
     <div className="relative w-full">
       <header
@@ -55,10 +66,23 @@ const NavBar = (props: NavBarProps) => {
             {/* <div className="global-action-menu grid grid-flow-col gap-2">
             </div> */}
             <div className="user">
-              <button className="Button logo">
+              <button
+                onClick={() => setIsAvatarMenuOpen((prev) => !prev)}
+                className="Button logo"
+              >
                 <span className="Button--content">
                   <span className="Button--label text-[#2f81f7]">
-                    <Icon name="user-circle" className="inline-block" />
+                    {name && image ? (
+                      <Image
+                        className="inline-block h-8 w-8 rounded-full"
+                        src={image}
+                        width={32}
+                        height={32}
+                        alt={name}
+                      />
+                    ) : (
+                      <Icon name="user-circle" className="inline-block" />
+                    )}
                   </span>
                 </span>
               </button>
