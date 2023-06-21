@@ -1,4 +1,5 @@
 import NavBar from './components/organisms/NavBar';
+import Provider from './components/organisms/Provider';
 import './globals.css';
 
 export const metadata = {
@@ -14,8 +15,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex min-h-screen flex-col">
-        <NavBar />
-        <main>{children}</main>
+        <Provider>
+          <NavBar />
+          <main>{children}</main>
+        </Provider>
       </body>
     </html>
   );
