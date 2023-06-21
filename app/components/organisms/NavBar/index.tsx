@@ -1,5 +1,7 @@
 'use client';
 
+import { useSession } from 'next-auth/react';
+import Image from 'next/image';
 import { useState } from 'react';
 import Icon from '../../modules/Icon';
 import Link from '../../modules/Link';
@@ -7,7 +9,11 @@ import Link from '../../modules/Link';
 type NavBarProps = {};
 
 const NavBar = (props: NavBarProps) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { data: session } = useSession();
+  const name = session?.user?.name;
+  const image = session?.user?.image;
+  const email = session?.user?.email;
+  const [isAvatarMenuOpen, setIsAvatarMenuOpen] = useState(false);
 
   return (
     <div className="relative w-full">
@@ -60,10 +66,23 @@ const NavBar = (props: NavBarProps) => {
             {/* <div className="global-action-menu grid grid-flow-col gap-2">
             </div> */}
             <div className="user">
-              <button className="Button logo">
+              <button
+                onClick={() => setIsAvatarMenuOpen((prev) => !prev)}
+                className="Button logo"
+              >
                 <span className="Button--content">
                   <span className="Button--label text-[#2f81f7]">
-                    <Icon name="user-circle" className="inline-block" />
+                    {name && image ? (
+                      <Image
+                        className="inline-block h-8 w-8 rounded-full"
+                        src={image}
+                        width={32}
+                        height={32}
+                        alt={name}
+                      />
+                    ) : (
+                      <Icon name="user-circle" className="inline-block" />
+                    )}
                   </span>
                 </span>
               </button>
