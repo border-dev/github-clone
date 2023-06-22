@@ -1,0 +1,13 @@
+overwrite: true
+schema: 'github-schema-loader.js'
+documents:
+  - './app/**/*.query.ts'
+  - './app/**/*.mutation.ts'
+generates:
+  ./app/lib/generated/graphql.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-query
+    config:
+      fetcher: graphql-request

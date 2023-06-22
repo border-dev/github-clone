@@ -9,3 +9,4 @@ jest.config.js
 jest.setup.js
 tailwind.config.js
 postcss.config.js
+app/lib/generated/graphql.ts

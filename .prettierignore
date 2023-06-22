@@ -7,3 +7,4 @@ package-lock.json
 next*
 public
 *.config.js
+app/lib/generated/graphql.ts
