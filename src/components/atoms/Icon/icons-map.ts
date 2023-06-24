@@ -1,4 +1,5 @@
 import {
+  BookOutline,
   ChevronUp,
   Clipboard,
   Close,
@@ -23,6 +24,7 @@ export const enum ICON_NAMES {
   'hamburger',
   'close',
   'user-circle',
+  'book-outline',
   'tablet-touch',
   'trending-upward',
   'trending-downward',
@@ -46,6 +48,7 @@ export const ICONS_MAP = new Map<IconKeyNames, React.FC<IconSVG>>([
   ['hamburger', Hamburger],
   ['close', Close],
   ['user-circle', UserCircle],
+  ['book-outline', BookOutline],
   ['tablet-touch', TabletTouch],
   ['trending-upward', TrendingUpward],
   ['trending-downward', TrendingDownward],

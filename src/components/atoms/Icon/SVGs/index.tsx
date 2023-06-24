@@ -1,3 +1,4 @@
+export { BookOutline } from './book-outline';
 export { ChevronUp } from './chevron-up';
 export { Clipboard } from './clipboard';
 export { Close } from './close';
