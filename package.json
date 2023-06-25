@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "yarn generate",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -26,6 +27,7 @@
     "classnames": "^2.3.2",
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.6",
+    "graphql-request": "5.1",
     "next": "13.4.6",
     "next-auth": "^4.22.1",
     "postcss": "8.4.24",
