@@ -3,33 +3,9 @@
 import Icon from '@components/atoms/Icon';
 import Link from '@components/modules/Link';
 import UserTopRepos from '@components/modules/UserTopRepos';
+import HomeFeedFooter from '@components/organisms/HomeFeedFooter';
 import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
-
-const footerLinks: any[] = [
-  { title: 'Blog', url: 'https://github.blog/' },
-  { title: 'About', url: 'https://github.com/about' },
-  { title: 'Shop', url: 'https://shop.github.com/' },
-  {
-    title: 'Contact Github',
-    url: 'https://support.github.com/?tags=dotcom-footer',
-  },
-  { title: 'Pricing', url: 'https://github.com/pricing' },
-
-  { title: 'API', url: 'https://docs.github.com/' },
-  { title: 'Training', url: 'https://services.github.com/' },
-  { title: 'Status', url: 'https://www.githubstatus.com/' },
-  { title: 'Security', url: 'https://github.com/security' },
-  {
-    title: 'Terms',
-    url: 'https://docs.github.com/site-policy/github-terms/github-terms-of-service',
-  },
-  {
-    title: 'Privacy',
-    url: 'https://docs.github.com/site-policy/privacy-policies/github-privacy-statement',
-  },
-  { title: 'Docs', url: 'https://docs.github.com/' },
-];
 
 export default function Home() {
   const { data: session } = useSession({
@@ -151,49 +127,7 @@ export default function Home() {
                     <button onClick={() => signOut()}>Sign Out</button>
                   </div>
                 </section>
-                {/* Footer */}
-                <div className="mx-auto my-8 grid w-full max-w-none grid-cols-5 gap-4 px-0 text-xs">
-                  <div className="col-span-2">
-                    <Link
-                      className="flex items-center"
-                      href="https://github.com/"
-                    >
-                      <Icon
-                        name="github"
-                        className="fill-dark mr-2 dark:fill-white"
-                        size={24}
-                      />
-                      © 2023 GitHub, Inc.
-                    </Link>
-                  </div>
-                  <div className="">
-                    <ul className="pl-6">
-                      {footerLinks.slice(0, 5).map(({ title, url }) => (
-                        <li key={title} className="mb-1">
-                          <Link href={url}>{title}</Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="">
-                    <ul className="pl-6">
-                      {footerLinks.slice(5, 9).map(({ title, url }) => (
-                        <li key={title} className="mb-1">
-                          <Link href={url}>{title}</Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="">
-                    <ul className="pl-6">
-                      {footerLinks.slice(9).map(({ title, url }) => (
-                        <li key={title} className="mb-1">
-                          <Link href={url}>{title}</Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+                <HomeFeedFooter />
               </div>
 
               {/* Right Sidebar */}
