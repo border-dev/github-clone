@@ -2,7 +2,8 @@
 
 import Icon from '@components/atoms/Icon';
 import Link from '@components/modules/Link';
-import { useSession } from 'next-auth/react';
+import UserTopRepos from '@components/modules/UserTopRepos';
+import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 
 const footerLinks: any[] = [
@@ -92,26 +93,19 @@ export default function Home() {
               <div>
                 <h2 className="mb-4 flex items-center justify-between text-base font-semibold md:text-sm">
                   Top Repositories
-                  <Link className="btn btn-primary px-3 py-1" href="#">
-                    <svg
-                      aria-hidden="true"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      version="1.1"
-                      width="16"
-                      data-view-component="true"
+                  <Link
+                    className="btn bg-[#238636] px-3 py-1 text-white"
+                    href="#"
+                  >
+                    <Icon
                       className="inline-block fill-current"
-                    >
-                      <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path>
-                    </svg>{' '}
+                      name="book-outline"
+                      size={16}
+                    />{' '}
                     New
                   </Link>
                 </h2>
-                <ul>
-                  <li>
-                    <div className="mt-2 flex w-full">something/link</div>
-                  </li>
-                </ul>
+                <UserTopRepos />
               </div>
             </div>
           </div>
@@ -133,7 +127,6 @@ export default function Home() {
                     Dashboard
                   </h1>
                   {/* Feed */}
-                  {/* TODO: Add mobile menu */}
                   <div>
                     <div className="flex">
                       <ul
@@ -155,6 +148,7 @@ export default function Home() {
                         </li>
                       </ul>
                     </div>
+                    <button onClick={() => signOut()}>Sign Out</button>
                   </div>
                 </section>
                 {/* Footer */}
