@@ -3,7 +3,7 @@
 import { useUserTopReposQuery } from '@lib/generated/graphql';
 import graphqlClient from '@lib/graphql-client';
 import Image from 'next/image';
-import Link from '../Link';
+import Link from '../../atoms/Link';
 import { parseTopReposQuery } from './parse-top-repos-query';
 
 const UserTopRepos = () => {

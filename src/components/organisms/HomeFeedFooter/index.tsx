@@ -1,5 +1,5 @@
 import Icon from '@components/atoms/Icon';
-import Link from '@components/modules/Link';
+import Link from '@components/atoms/Link';
 import { HOME_FEED_FOOTER_LINKS } from '@lib/url-constants';
 
 const HomeFeedFooter = () => {

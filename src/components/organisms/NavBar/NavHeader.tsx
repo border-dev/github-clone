@@ -1,5 +1,4 @@
-import Link from '@components/modules/Link';
-import React from 'react';
+import Link from '@components/atoms/Link';
 
 type NavHeaderProps = {
   owner: string;

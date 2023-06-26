@@ -1,5 +1,5 @@
 import Icon from '@components/atoms/Icon';
-import Link from '@components/modules/Link';
+import Link from '@components/atoms/Link';
 import UserTopRepos from '@components/modules/UserTopRepos';
 import Image from 'next/image';
 
