@@ -4,24 +4,23 @@ import Icon from '@components/atoms/Icon';
 import Link from '@components/modules/Link';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import NavHeader from './NavHeader';
+import RepoHeaderNav from './RepoHeaderNav';
 
-type NavBarProps = {};
-
-const NavBar = (props: NavBarProps) => {
+const NavBar = () => {
   const { data: session } = useSession();
-  const name = session?.user?.name;
+  const user = session?.user?.name;
   const image = session?.user?.image;
-
+  const path = usePathname();
+  const [, owner, name, currentPath] = path.split('/');
   const [isAvatarMenuOpen, setIsAvatarMenuOpen] = useState(false);
 
   return (
     <div className="relative w-full">
-      <header
-        className="header-shadow-b text-white "
-        style={{ backgroundColor: '#010409' }}
-      >
-        <div className="flex gap-3 p-4">
+      <header className="header-shadow-b bg-[#010409] text-white">
+        <div className="flex gap-3 p-4 pb-2">
           <div className="flex flex-auto gap-2">
             <div>
               <button className="header-sidebar-btn btn--iconOnly btn--secondary">
@@ -40,25 +39,7 @@ const NavBar = (props: NavBarProps) => {
               />
             </Link>
             <div className="h-8 min-w-0 flex-auto">
-              <div className="md:hidden">
-                <Link href="/" className="flex items-center">
-                  Dashboard
-                </Link>
-              </div>
-              <div className="inline-flex w-full min-w-0 max-w-full overflow-hidden">
-                <nav aria-label="Page context" className="w-full">
-                  <ul role="list" className="flex flex-row">
-                    <li>
-                      <Link
-                        href="/"
-                        className="dashboard-link grid h-12 w-full cursor-pointer appearance-none items-center rounded-md border-0 bg-transparent text-left text-sm font-semibold text-inherit"
-                      >
-                        Dashboard
-                      </Link>
-                    </li>
-                  </ul>
-                </nav>
-              </div>
+              <NavHeader owner={owner} name={name} />
             </div>
           </div>
           <div className="global-navbar-end">
@@ -72,13 +53,13 @@ const NavBar = (props: NavBarProps) => {
               >
                 <span className="Button--content">
                   <span className="Button--label text-[#2f81f7]">
-                    {name && image ? (
+                    {user && image ? (
                       <Image
                         className="inline-block h-8 w-8 rounded-full"
                         src={image}
                         width={32}
                         height={32}
-                        alt={name}
+                        alt={user}
                       />
                     ) : (
                       <Icon name="user-circle" className="inline-block" />
@@ -90,6 +71,9 @@ const NavBar = (props: NavBarProps) => {
             </div>
           </div>
         </div>
+        {owner && name && (
+          <RepoHeaderNav owner={owner} name={name} currentPath={currentPath} />
+        )}
       </header>
     </div>
   );
