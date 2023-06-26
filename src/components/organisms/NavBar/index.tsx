@@ -7,19 +7,20 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import NavHeader from './NavHeader';
+import RepoHeaderNav from './RepoHeaderNav';
 
 const NavBar = () => {
   const { data: session } = useSession();
   const user = session?.user?.name;
   const image = session?.user?.image;
   const path = usePathname();
-  const [, owner, name] = path.split('/');
+  const [, owner, name, currentPath] = path.split('/');
   const [isAvatarMenuOpen, setIsAvatarMenuOpen] = useState(false);
 
   return (
     <div className="relative w-full">
       <header className="header-shadow-b bg-[#010409] text-white">
-        <div className="flex gap-3 p-4">
+        <div className="flex gap-3 p-4 pb-2">
           <div className="flex flex-auto gap-2">
             <div>
               <button className="header-sidebar-btn btn--iconOnly btn--secondary">
@@ -70,6 +71,9 @@ const NavBar = () => {
             </div>
           </div>
         </div>
+        {owner && name && (
+          <RepoHeaderNav owner={owner} name={name} currentPath={currentPath} />
+        )}
       </header>
     </div>
   );
