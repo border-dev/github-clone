@@ -149,10 +149,22 @@ header nav ul li {
 }
 
 header nav ul li a {
-  width: 3ch;
-  line-height: calc(20 / 14);
+  display: flex;
+  align-items: center;
+  min-width: 3ch;
+  line-height: 1.4285714286;
+  color: inherit;
+  border-radius: 6px;
   padding-inline: 8px;
   padding-block: 6px;
+}
+
+header nav ul li:first-child {
+  flex: 0 100 max-content;
+}
+
+header nav ul li:last-child {
+  font-weight: 600;
 }
 
 .dashboard-link {
