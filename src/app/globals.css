@@ -28,11 +28,15 @@ body {
   }
 
   .btn {
-    @apply relative inline-block cursor-pointer select-none appearance-none whitespace-nowrap rounded-md border border-transparent px-1 py-4 align-middle text-sm;
+    @apply relative inline-block cursor-pointer select-none appearance-none whitespace-nowrap rounded-md border border-transparent px-4 py-[5px] align-middle text-sm;
   }
 
   .btn-primary {
     @apply bg-green-700 text-white;
+  }
+
+  .icon {
+    @apply inline-block overflow-visible fill-current align-text-bottom;
   }
 }
 
@@ -243,4 +247,71 @@ header nav ul li:last-child {
   min-width: 1.25rem;
   padding: 0 6px;
   text-align: center;
+}
+
+.Box {
+  background-color: #30363d;
+  border-color: #30363d;
+  border-style: solid;
+  border-width: max(1px, 0.0625rem);
+  border-radius: 6px;
+}
+
+.Box-header {
+  padding: 1rem;
+  margin: calc(max(1px, 0.0625rem) * -1) calc(max(1px, 0.0625rem) * -1) 0;
+  background-color: #161b22;
+  border-color: #30363d;
+  border-style: solid;
+  border-width: max(1px, 0.0625rem);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.Box-row {
+  padding: 0.5rem 1rem;
+  margin-top: calc(max(1px, 0.0625rem) * -1);
+  list-style-type: none;
+  border-top-color: #6e768166;
+  border-top-style: solid;
+  border-top-width: max(1px, 0.0625rem);
+}
+
+.avatar {
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1;
+  vertical-align: middle;
+  background-color: var(--avatar-bgColor, var(--color-avatar-bg));
+  border-radius: var(--borderRadius-medium, 6px);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 1px var(--avatar-borderColor, var(--color-avatar-border));
+}
+
+.AvatarStack-body .avatar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: 20px;
+  height: 20px;
+  box-sizing: content-box;
+  margin-right: -11px;
+  background-color: var(--bgColor-default, var(--color-canvas-default));
+  border-right: var(--borderWidth-thin, max(1px, 0.0625rem)) solid
+    var(--bgColor-default, var(--color-canvas-default));
+  border-radius: var(--borderRadius-small, 3px);
+  box-shadow: none;
+  transition: margin 0.1s ease-in-out;
+}
+
+.file-nav::before,
+.clearfix::before {
+  display: table;
+  content: '';
+}
+
+.clearfix::after {
+  display: table;
+  clear: both;
+  content: '';
 }

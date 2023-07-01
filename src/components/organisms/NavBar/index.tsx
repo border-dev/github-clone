@@ -1,7 +1,7 @@
 'use client';
 
 import Icon from '@components/atoms/Icon';
-import Link from '@components/modules/Link';
+import Link from '@components/atoms/Link';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';

@@ -10,4 +10,6 @@ generates:
       - typescript-operations
       - typescript-react-query
     config:
+      exposeQueryKeys: true
       fetcher: graphql-request
+      exposeFetcher: true
