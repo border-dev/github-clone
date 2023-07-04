@@ -1,7 +1,7 @@
 import Icon from '@components/atoms/Icon';
 import Link from '@components/atoms/Link';
+import { getPastDate } from '@utils/date-formatter';
 import Image from 'next/image';
-import { getPastDate } from '../../../utils/date-formatter';
 
 type RepoHomeFileExplorerHeaderProps = {
   commitAuthor: string;

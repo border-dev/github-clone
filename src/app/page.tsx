@@ -1,7 +1,7 @@
 'use client';
 
 import Icon from '@components/atoms/Icon';
-import HomeFeedFooter from '@components/organisms/HomeFeedFooter';
+import HomeFeedFooter from '@components/modules/HomeFeedFooter';
 import HomeLeftSidebar from '@components/organisms/HomeLeftSidebar';
 import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';

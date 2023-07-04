@@ -1,11 +1,11 @@
 'use client';
 
+import FileExplorerNavigation from '@components/modules/FileExplorerNavigation';
+import RepoHomePageFileExplorer from '@components/modules/RepoHomePageFileExplorer';
+import { parseRepo } from '@components/modules/RepoHomePageFileExplorer/parse-repo';
+import RepoPageHeader from '@components/modules/RepoPageHeader';
 import { useRepoPageQuery } from '@lib/generated/graphql';
 import graphqlClient from '@lib/graphql-client';
-import { parseRepo } from '../RepoHomeFileExplorer/parse-repo';
-import RepoPageFileExplorer from '../RepoHomeFileExplorer';
-import FileExplorerNavigation from '../../modules/FileExplorerNavigation';
-import RepoPageHeader from './RepoPageHeader';
 
 type RepoPageProps = {
   owner: string;
@@ -51,7 +51,7 @@ const RepoPage = ({
               <div className="col-span-1 col-end-auto min-w-0">
                 {/* File navigation */}
                 <FileExplorerNavigation owner={owner} name={name} />
-                <RepoPageFileExplorer {...{ owner, name, branch, path }} />
+                <RepoHomePageFileExplorer {...{ owner, name, branch, path }} />
                 {/* README section */}
                 <div></div>
               </div>

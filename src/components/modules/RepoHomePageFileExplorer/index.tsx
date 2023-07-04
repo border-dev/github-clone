@@ -1,22 +1,22 @@
-import RepoHomeFileExplorerHeader from '@components/modules/RepoHomeFileExlporerHeader';
-import RepoHomeFileExplorer from '@components/modules/RepoHomeFileExplorer';
+import RepoHomeFileExplorerHeader from '@components/modules/RepoHomeFileExplorerHeader';
+import RepoHomeFileExplorerViewer from '@components/modules/RepoHomeFileExplorerViewer';
 import { useFileExplorerQuery } from '@lib/generated/graphql';
 import graphqlClient from '@lib/graphql-client';
 import { parseFileExplorer } from './parse-file-explorer';
 
-type RepoPageFileExplorerProps = {
+type RepoHomePageFileExplorerProps = {
   owner: string;
   name: string;
   branch: string;
   path: string;
 };
 
-const RepoPageFileExplorer = ({
+const RepoHomePageFileExplorer = ({
   owner,
   name,
   branch,
   path,
-}: RepoPageFileExplorerProps) => {
+}: RepoHomePageFileExplorerProps) => {
   const { data, error, isLoading } = useFileExplorerQuery(graphqlClient, {
     owner,
     name,
@@ -37,9 +37,9 @@ const RepoPageFileExplorer = ({
   return (
     <div className="Box mb-4">
       <RepoHomeFileExplorerHeader {...{ ...explorer, branch }} />
-      <RepoHomeFileExplorer {...{ owner, name, branch, files }} />
+      <RepoHomeFileExplorerViewer {...{ owner, name, branch, files }} />
     </div>
   );
 };
 
-export default RepoPageFileExplorer;
+export default RepoHomePageFileExplorer;

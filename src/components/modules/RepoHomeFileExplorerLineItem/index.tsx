@@ -4,7 +4,7 @@ import Icon from '@components/atoms/Icon';
 import Link from '@components/atoms/Link';
 import { useCommitHistoryQuery } from '@lib/generated/graphql';
 import graphqlClient from '@lib/graphql-client';
-import { getPastDate } from '../../../utils/date-formatter';
+import { getPastDate } from '@utils/date-formatter';
 import { ExplorerLineItemDetails, parseFileInfo } from './parse-file-info';
 
 type RepoHomeFileExplorerLineItemProps = {

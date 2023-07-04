@@ -1,19 +1,19 @@
-import { ExplorerLineItem } from '@components/organisms/RepoHomeFileExplorer/parse-file-explorer';
+import { ExplorerLineItem } from '@components/modules/RepoHomePageFileExplorer/parse-file-explorer';
 import RepoHomeFileExplorerLineItem from '../RepoHomeFileExplorerLineItem';
 
-type RepoHomeFileExplorerProps = {
+type RepoHomeFileExplorerViewerProps = {
   owner: string;
   name: string;
   branch: string;
   files: ExplorerLineItem[];
 };
 
-const RepoHomeFileExplorer = ({
+const RepoHomeFileExplorerViewer = ({
   owner,
   name,
   branch,
   files,
-}: RepoHomeFileExplorerProps) => {
+}: RepoHomeFileExplorerViewerProps) => {
   return (
     <>
       <h2 className="sr-only">Files</h2>
@@ -37,4 +37,4 @@ const RepoHomeFileExplorer = ({
   );
 };
 
-export default RepoHomeFileExplorer;
+export default RepoHomeFileExplorerViewer;

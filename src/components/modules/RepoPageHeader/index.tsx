@@ -1,6 +1,6 @@
 import Link from '@components/atoms/Link';
 import Image from 'next/image';
-import { Repo } from '../RepoHomeFileExplorer/parse-repo';
+import { Repo } from '../RepoHomePageFileExplorer/parse-repo';
 
 type RepoPageHeaderProps = {
   repo: Repo;
