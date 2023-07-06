@@ -40,7 +40,7 @@ const RepoPageHeader = ({ repo, owner, name }: RepoPageHeaderProps) => {
         </div>
       </div>
       <div className="m-auto max-w-7xl">
-        <div className="border border-b-[#30363d] lg:mx-8"></div>
+        <div className="border-b border-b-[#30363d] xl:mx-8"></div>
       </div>
     </div>
   );
