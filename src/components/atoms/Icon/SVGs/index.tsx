@@ -11,6 +11,8 @@ export { GitBranch } from './git-branch';
 export { Github } from './github';
 export { Hamburger } from './hamburger';
 export { History } from './history';
+export { ListUnordered } from './list-unordered';
+export { Pencil } from './pencil';
 export { Quote } from './quote';
 export { TabletTouch } from './tablet-touch';
 export { Tag } from './tag';
