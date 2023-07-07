@@ -7,7 +7,7 @@ import graphqlClient from '@lib/graphql-client';
 import { getPastDate } from '@utils/date-formatter';
 import { ExplorerLineItemDetails, parseFileInfo } from './parse-file-info';
 
-type RepoHomeFileExplorerLineItemProps = {
+type FileExplorerLineItemProps = {
   owner: string;
   name: string;
   branch: string;
@@ -16,14 +16,14 @@ type RepoHomeFileExplorerLineItemProps = {
   path: string;
 };
 
-const RepoHomeFileExplorerLineItem = ({
+const FileExplorerLineItem = ({
   owner,
   name,
   branch,
   type,
   fileName,
   path,
-}: RepoHomeFileExplorerLineItemProps) => {
+}: FileExplorerLineItemProps) => {
   const { data } = useCommitHistoryQuery(graphqlClient, {
     owner,
     name,
@@ -94,4 +94,4 @@ const RepoHomeFileExplorerLineItem = ({
   );
 };
 
-export default RepoHomeFileExplorerLineItem;
+export default FileExplorerLineItem;

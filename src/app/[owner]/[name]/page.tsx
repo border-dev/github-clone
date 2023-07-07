@@ -1,5 +1,5 @@
 import Hydrate from '@components/organisms/Hydrate';
-import RepoPage from '@components/organisms/RepoHome';
+import RepoHome from '@components/organisms/RepoHome';
 import { useRepoPageQuery } from '@lib/generated/graphql';
 import graphqlClient from '@lib/graphql-client';
 import { QueryClient, dehydrate } from '@tanstack/react-query';
@@ -28,7 +28,7 @@ export default async function RepoPageHydration({ params }: RepoPageProps) {
 
   return (
     <Hydrate state={dehydratedState}>
-      <RepoPage {...{ ...variables, branch, path }} />
+      <RepoHome {...{ ...variables, branch, path }} />
     </Hydrate>
   );
 }

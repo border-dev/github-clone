@@ -34,6 +34,13 @@ export const REPO_PAGE_QUERY = gql`
           orgAvatarUrl: avatarUrl
         }
       }
+      languages(first: 5) {
+        nodes {
+          id
+          name
+          color
+        }
+      }
     }
   }
 `;

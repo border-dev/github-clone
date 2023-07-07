@@ -37,11 +37,11 @@ const FileExplorerNavigation = ({
       <div className="btn ml-2 hidden border-[#f0f6fc1a] bg-[#21262d] text-[#c9d1d9] shadow-[0_0_transparent] transition duration-[80ms] md:block">
         Add file
       </div>
-      <div className="btn ml-2 hidden border-[#f0f6fc1a] bg-[#238636] text-[#c9d1d9] shadow-[0_0_transparent] transition duration-[80ms] md:block">
+      <div className="btn ml-2 hidden border-[#f0f6fc1a] bg-[#238636] text-white shadow-[0_0_transparent] transition duration-[80ms] md:flex md:items-center">
         <Icon
           name="code-simple"
           size={16}
-          className="mr-2 inline overflow-visible fill-[#c9d1d9] text-[#c9d1d9]"
+          className="mr-2 inline overflow-visible fill-white text-white"
         />
         Code
       </div>
