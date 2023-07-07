@@ -2,6 +2,7 @@
 
 import RepoHomeAbout from '@components/modules/RepoHomeAbout';
 import RepoHomeFileExplorer from '@components/modules/RepoHomeFileExplorer';
+import RepoHomeFooter from '@components/modules/RepoHomeFooter';
 import RepoHomeReadMe from '@components/modules/RepoHomeReadMe';
 import RepoPageHeader from '@components/modules/RepoPageHeader';
 import { useRepoPageQuery } from '@lib/generated/graphql';
@@ -64,6 +65,7 @@ const RepoHome = ({
           </div>
         </div>
       </div>
+      <RepoHomeFooter />
     </div>
   );
 };
