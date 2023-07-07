@@ -10,9 +10,9 @@ type RepoPageHeaderProps = {
 
 const RepoPageHeader = ({ repo, owner, name }: RepoPageHeaderProps) => {
   return (
-    <div className=" pt-4">
+    <div className="pt-4">
       <div className="m-auto mb-4 flex max-w-7xl flex-wrap justify-end gap-4 px-4 md:px-6 lg:px-8">
-        <div className=" mr-4 min-w-0 max-w-full flex-auto">
+        <div className="mr-4 min-w-0 max-w-full flex-auto">
           <div className="flex flex-wrap items-center break-words text-lg font-normal md:text-2xl">
             <Image
               src={repo.orgAvatarUrl ?? ''}
