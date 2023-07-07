@@ -10,13 +10,13 @@ import rehype from 'rehype-raw';
 import remark from 'remark-gfm';
 import { parseRepoReadmeQuery } from './parse-repo-home-readme';
 
-type RepoHomePageReadMeProps = {
+type RepoHomeReadMeProps = {
   owner: string;
   name: string;
   path: string;
 };
 
-const RepoHomePageReadMe = ({ owner, name, path }: RepoHomePageReadMeProps) => {
+const RepoHomeReadMe = ({ owner, name, path }: RepoHomeReadMeProps) => {
   const pathname = usePathname();
   const { data, isLoading, error } = useRepoHomeReadMeQuery(graphqlClient, {
     owner: owner,
@@ -84,4 +84,4 @@ const RepoHomePageReadMe = ({ owner, name, path }: RepoHomePageReadMeProps) => {
   return null;
 };
 
-export default RepoHomePageReadMe;
+export default RepoHomeReadMe;

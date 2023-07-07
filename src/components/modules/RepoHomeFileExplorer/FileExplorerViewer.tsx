@@ -1,19 +1,19 @@
-import { ExplorerLineItem } from '@components/modules/RepoHomePageFileExplorer/parse-file-explorer';
-import RepoHomeFileExplorerLineItem from '../RepoHomeFileExplorerLineItem';
+import FileExplorerLineItem from '../FileExplorerLineItem';
+import { ExplorerLineItem } from './parse-file-explorer';
 
-type RepoHomeFileExplorerViewerProps = {
+type FileExplorerViewerProps = {
   owner: string;
   name: string;
   branch: string;
   files: ExplorerLineItem[];
 };
 
-const RepoHomeFileExplorerViewer = ({
+const FileExplorerViewer = ({
   owner,
   name,
   branch,
   files,
-}: RepoHomeFileExplorerViewerProps) => {
+}: FileExplorerViewerProps) => {
   return (
     <>
       <h2 className="sr-only">Files</h2>
@@ -27,7 +27,7 @@ const RepoHomeFileExplorerViewer = ({
           <div role="columnheader">Commit time</div>
         </div>
         {files.map(({ type, name: fileName, path }) => (
-          <RepoHomeFileExplorerLineItem
+          <FileExplorerLineItem
             key={path}
             {...{ owner, branch, name, type, fileName, path }}
           />
@@ -37,4 +37,4 @@ const RepoHomeFileExplorerViewer = ({
   );
 };
 
-export default RepoHomeFileExplorerViewer;
+export default FileExplorerViewer;

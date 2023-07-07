@@ -1,22 +1,23 @@
-import RepoHomeFileExplorerHeader from '@components/modules/RepoHomeFileExplorerHeader';
-import RepoHomeFileExplorerViewer from '@components/modules/RepoHomeFileExplorerViewer';
 import { useFileExplorerQuery } from '@lib/generated/graphql';
 import graphqlClient from '@lib/graphql-client';
+import FileExplorerHeader from './FileExplorerHeader';
+import FileExplorerNavigation from './FileExplorerNavigation';
+import FileExplorerViewer from './FileExplorerViewer';
 import { parseFileExplorer } from './parse-file-explorer';
 
-type RepoHomePageFileExplorerProps = {
+type RepoHomeFileExplorerProps = {
   owner: string;
   name: string;
   branch: string;
   path: string;
 };
 
-const RepoHomePageFileExplorer = ({
+const RepoHomeFileExplorer = ({
   owner,
   name,
   branch,
   path,
-}: RepoHomePageFileExplorerProps) => {
+}: RepoHomeFileExplorerProps) => {
   const { data, error, isLoading } = useFileExplorerQuery(graphqlClient, {
     owner,
     name,
@@ -35,11 +36,14 @@ const RepoHomePageFileExplorer = ({
   const { files, ...explorer } = parseFileExplorer(data);
 
   return (
-    <div className="Box mb-4">
-      <RepoHomeFileExplorerHeader {...{ ...explorer, branch }} />
-      <RepoHomeFileExplorerViewer {...{ owner, name, branch, files }} />
-    </div>
+    <>
+      <FileExplorerNavigation owner={owner} name={name} />
+      <div className="Box mb-4">
+        <FileExplorerHeader {...{ ...explorer, branch }} />
+        <FileExplorerViewer {...{ owner, name, branch, files }} />
+      </div>
+    </>
   );
 };
 
-export default RepoHomePageFileExplorer;
+export default RepoHomeFileExplorer;

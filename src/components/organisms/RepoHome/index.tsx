@@ -1,13 +1,12 @@
 'use client';
 
-import FileExplorerNavigation from '@components/modules/FileExplorerNavigation';
-import RepoHomePageAbout from '@components/modules/RepoHomePageAbout';
-import RepoHomePageFileExplorer from '@components/modules/RepoHomePageFileExplorer';
-import { parseRepo } from '@components/modules/RepoHomePageFileExplorer/parse-repo';
-import RepoHomePageReadMe from '@components/modules/RepoHomePageReadme';
+import RepoHomeAbout from '@components/modules/RepoHomeAbout';
+import RepoHomeFileExplorer from '@components/modules/RepoHomeFileExplorer';
+import RepoHomeReadMe from '@components/modules/RepoHomeReadMe';
 import RepoPageHeader from '@components/modules/RepoPageHeader';
 import { useRepoPageQuery } from '@lib/generated/graphql';
 import graphqlClient from '@lib/graphql-client';
+import { parseRepo } from './parse-repo';
 
 type RepoPageProps = {
   owner: string;
@@ -16,7 +15,7 @@ type RepoPageProps = {
   path?: string;
 };
 
-const RepoPage = ({
+const RepoHome = ({
   owner,
   name,
   branch: branchPath,
@@ -50,12 +49,11 @@ const RepoPage = ({
           <div>
             <div className="m-w-0 grid grid-flow-col grid-cols-[minmax(0,_calc(100%_-_296px_-_24px))_0_auto] gap-6">
               <div className="col-span-1 col-end-auto min-w-0">
-                <FileExplorerNavigation owner={owner} name={name} />
-                <RepoHomePageFileExplorer {...{ owner, name, branch, path }} />
-                <RepoHomePageReadMe owner={owner} name={name} path={path} />
+                <RepoHomeFileExplorer {...{ owner, name, branch, path }} />
+                <RepoHomeReadMe owner={owner} name={name} path={path} />
               </div>
               <div className="col-span-2 col-start-2 w-[296px]">
-                <RepoHomePageAbout
+                <RepoHomeAbout
                   description={repo.description}
                   homePageURL={repo.homepageUrl}
                   topics={repo.topics}
@@ -70,4 +68,4 @@ const RepoPage = ({
   );
 };
 
-export default RepoPage;
+export default RepoHome;

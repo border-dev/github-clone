@@ -1,7 +1,7 @@
 import Icon from '@components/atoms/Icon';
 import Link from '@components/atoms/Link';
 import classNames from 'classnames';
-import { Language } from '../RepoHomePageFileExplorer/parse-repo-languages';
+import { Language } from '../../organisms/RepoHome/parse-repo-languages';
 
 type LanguagesProps = {
   languages?: Language[] | null;

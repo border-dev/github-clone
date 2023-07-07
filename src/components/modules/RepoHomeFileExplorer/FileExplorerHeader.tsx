@@ -3,7 +3,7 @@ import Link from '@components/atoms/Link';
 import { getPastDate } from '@utils/date-formatter';
 import Image from 'next/image';
 
-type RepoHomeFileExplorerHeaderProps = {
+type FileExplorerHeaderProps = {
   commitAuthor: string;
   commitAuthorAvatarUrl: string;
   lastCommitMessage: string;
@@ -13,7 +13,7 @@ type RepoHomeFileExplorerHeaderProps = {
   branch: string;
 };
 
-const RepoHomeFileExplorerHeader = ({
+const FileExplorerHeader = ({
   commitAuthor,
   commitAuthorAvatarUrl,
   lastCommitMessage,
@@ -21,7 +21,7 @@ const RepoHomeFileExplorerHeader = ({
   lastCommittedDate,
   totalCommits,
   branch,
-}: RepoHomeFileExplorerHeaderProps) => {
+}: FileExplorerHeaderProps) => {
   return (
     <div className="Box-header relative">
       <h2 className="sr-only">Latest commit</h2>
@@ -94,4 +94,4 @@ const RepoHomeFileExplorerHeader = ({
   );
 };
 
-export default RepoHomeFileExplorerHeader;
+export default FileExplorerHeader;

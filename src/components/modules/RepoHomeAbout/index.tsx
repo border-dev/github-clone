@@ -5,9 +5,9 @@ import Description from './Description';
 import HomepageUrl from './HomepageUrl';
 import Languages from './Languages';
 import Topics from './Topics';
-import { Language } from '../RepoHomePageFileExplorer/parse-repo-languages';
+import { Language } from '../../organisms/RepoHome/parse-repo-languages';
 
-type RepoHomePageAboutProps = {
+type RepoHomeAboutProps = {
   description?: string | null;
   homePageURL?: string | null;
   topics?: string[] | null;
@@ -15,13 +15,13 @@ type RepoHomePageAboutProps = {
   languages?: Language[] | null;
 };
 
-const RepoHomePageAbout = ({
+const RepoHomeAbout = ({
   description,
   homePageURL,
   topics,
   contributors,
   languages,
-}: RepoHomePageAboutProps) => {
+}: RepoHomeAboutProps) => {
   return (
     <div className="BorderGrid BorderGrid--spacious">
       <div className="table-row">
@@ -134,4 +134,4 @@ const RepoHomePageAbout = ({
   );
 };
 
-export default RepoHomePageAbout;
+export default RepoHomeAbout;
