@@ -1,11 +1,11 @@
 import Icon from '@components/atoms/Icon';
 import Link from '@components/atoms/Link';
+import { Language } from '@components/organisms/RepoHome/parse-repo';
 import Contributors from './Contributors';
 import Description from './Description';
 import HomepageUrl from './HomepageUrl';
 import Languages from './Languages';
 import Topics from './Topics';
-import { Language } from '../../organisms/RepoHome/parse-repo-languages';
 
 type RepoHomeAboutProps = {
   description?: string | null;

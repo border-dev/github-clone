@@ -30,8 +30,8 @@ export const REPO_PAGE_QUERY = gql`
       }
       owner {
         ... on Organization {
-          orgName: name
-          orgAvatarUrl: avatarUrl
+          name
+          avatarUrl
         }
       }
       languages(first: 5) {

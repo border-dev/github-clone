@@ -38,6 +38,7 @@ const RepoHome = ({
   const path = Array.isArray(fullPath)
     ? fullPath.join('/')
     : (fullPath as string);
+  const revision = typeof branchPath === 'string' ? branchPath : 'HEAD';
   const branch = typeof branchPath === 'string' ? branchPath : 'main';
   const repo = parseRepo(data);
 
@@ -50,7 +51,9 @@ const RepoHome = ({
           <div>
             <div className="m-w-0 grid grid-flow-col grid-cols-[minmax(0,_calc(100%_-_296px_-_24px))_0_auto] gap-6">
               <div className="col-span-1 col-end-auto min-w-0">
-                <RepoHomeFileExplorer {...{ owner, name, branch, path }} />
+                <RepoHomeFileExplorer
+                  {...{ owner, name, branch, revision, path }}
+                />
                 <RepoHomeReadMe owner={owner} name={name} path={path} />
               </div>
               <div className="col-span-2 col-start-2 w-[296px]">

@@ -1,14 +1,18 @@
+'use client';
+
 import { useFileExplorerQuery } from '@lib/generated/graphql';
 import graphqlClient from '@lib/graphql-client';
 import FileExplorerHeader from './FileExplorerHeader';
 import FileExplorerNavigation from './FileExplorerNavigation';
 import FileExplorerViewer from './FileExplorerViewer';
 import { parseFileExplorer } from './parse-file-explorer';
+import { useMemo } from 'react';
 
 type RepoHomeFileExplorerProps = {
   owner: string;
   name: string;
   branch: string;
+  revision: string;
   path: string;
 };
 
@@ -16,13 +20,16 @@ const RepoHomeFileExplorer = ({
   owner,
   name,
   branch,
+  revision,
   path,
 }: RepoHomeFileExplorerProps) => {
+  const getDate = useMemo(() => new Date().toISOString(), []);
   const { data, error, isLoading } = useFileExplorerQuery(graphqlClient, {
     owner,
     name,
-    // expression: `${branch}:${path}`,
-    expression: 'HEAD:',
+    expression: `${revision}:${path}`,
+    branch,
+    date: getDate,
   });
 
   if (isLoading) {
@@ -39,7 +46,10 @@ const RepoHomeFileExplorer = ({
     <>
       <FileExplorerNavigation owner={owner} name={name} />
       <div className="Box mb-4">
-        <FileExplorerHeader {...{ ...explorer, branch }} />
+        <FileExplorerHeader
+          summary={explorer.latestCommitSummary}
+          branch={branch}
+        />
         <FileExplorerViewer {...{ owner, name, branch, files }} />
       </div>
     </>

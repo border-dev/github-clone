@@ -1,11 +1,11 @@
 import FileExplorerLineItem from '../FileExplorerLineItem';
-import { ExplorerLineItem } from './parse-file-explorer';
+import { ExplorerLineItemCommitHistory } from './parse-file-explorer';
 
 type FileExplorerViewerProps = {
   owner: string;
   name: string;
   branch: string;
-  files: ExplorerLineItem[];
+  files: ExplorerLineItemCommitHistory[];
 };
 
 const FileExplorerViewer = ({
@@ -13,28 +13,26 @@ const FileExplorerViewer = ({
   name,
   branch,
   files,
-}: FileExplorerViewerProps) => {
-  return (
-    <>
-      <h2 className="sr-only">Files</h2>
-      <div role="grid" className="text-sm md:block">
-        <div className="sr-only" role="row">
-          <div role="columnheader">Type</div>
-          <div role="columnheader">Name</div>
-          <div role="columnheader" className="none md:block">
-            Latest commit message
-          </div>
-          <div role="columnheader">Commit time</div>
+}: FileExplorerViewerProps) => (
+  <>
+    <h2 className="sr-only">Files</h2>
+    <div role="grid" className="text-sm md:block">
+      <div className="sr-only" role="row">
+        <div role="columnheader">Type</div>
+        <div role="columnheader">Name</div>
+        <div role="columnheader" className="none md:block">
+          Latest commit message
         </div>
-        {files.map(({ type, name: fileName, path }) => (
-          <FileExplorerLineItem
-            key={path}
-            {...{ owner, branch, name, type, fileName, path }}
-          />
-        ))}
+        <div role="columnheader">Commit time</div>
       </div>
-    </>
-  );
-};
+      {files.map((file) => (
+        <FileExplorerLineItem
+          key={file.path}
+          {...{ owner, branch, name, file }}
+        />
+      ))}
+    </div>
+  </>
+);
 
 export default FileExplorerViewer;

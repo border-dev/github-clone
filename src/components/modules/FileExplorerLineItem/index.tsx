@@ -1,42 +1,22 @@
-'use client';
-
 import Icon from '@components/atoms/Icon';
 import Link from '@components/atoms/Link';
-import { useCommitHistoryQuery } from '@lib/generated/graphql';
-import graphqlClient from '@lib/graphql-client';
 import { getPastDate } from '@utils/date-formatter';
-import { ExplorerLineItemDetails, parseFileInfo } from './parse-file-info';
+import { ExplorerLineItemCommitHistory } from '../RepoHomeFileExplorer/parse-file-explorer';
 
 type FileExplorerLineItemProps = {
   owner: string;
   name: string;
   branch: string;
-  type: string;
-  fileName: string;
-  path: string;
+  file: ExplorerLineItemCommitHistory;
 };
 
 const FileExplorerLineItem = ({
   owner,
   name,
   branch,
-  type,
-  fileName,
-  path,
+  file,
 }: FileExplorerLineItemProps) => {
-  const { data } = useCommitHistoryQuery(graphqlClient, {
-    owner,
-    name,
-    branch,
-    path,
-  });
-
-  const file: ExplorerLineItemDetails = !data
-    ? {
-        latestCommitMessage: '',
-        lastCommittedDate: '',
-      }
-    : parseFileInfo(data);
+  const { type, name: fileName, path, messageHeadline, committedDate } = file;
 
   return (
     <div
@@ -54,7 +34,7 @@ const FileExplorerLineItem = ({
         ) : (
           <Icon
             aria-label="File"
-            name="directory"
+            name="file"
             className="icon text-[#7d8590]"
             size={16}
           />
@@ -78,16 +58,14 @@ const FileExplorerLineItem = ({
       >
         <span className="block w-full truncate align-top">
           <Link className="text-[#7d8590]" href="#">
-            {file.latestCommitMessage || '[no commit message]'}
+            {messageHeadline || '[no commit message]'}
           </Link>
         </span>
       </div>
 
       <div role="gridcell" className="w-[100px] text-right text-[#7d8590]">
         <div className="whitespace-nowrap">
-          {file.lastCommittedDate
-            ? getPastDate(file.lastCommittedDate)
-            : '[no date]'}
+          {committedDate ? getPastDate(committedDate) : '[no date]'}
         </div>
       </div>
     </div>
