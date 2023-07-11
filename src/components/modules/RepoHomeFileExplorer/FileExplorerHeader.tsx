@@ -2,26 +2,14 @@ import Icon from '@components/atoms/Icon';
 import Link from '@components/atoms/Link';
 import { getPastDate } from '@utils/date-formatter';
 import Image from 'next/image';
+import { CommitSummary } from './parse-file-explorer';
 
 type FileExplorerHeaderProps = {
-  commitAuthor: string;
-  commitAuthorAvatarUrl: string;
-  lastCommitMessage: string;
-  shortCommitHash: string;
-  lastCommittedDate: string;
-  totalCommits: number;
+  summary: CommitSummary;
   branch: string;
 };
 
-const FileExplorerHeader = ({
-  commitAuthor,
-  commitAuthorAvatarUrl,
-  lastCommitMessage,
-  shortCommitHash,
-  lastCommittedDate,
-  totalCommits,
-  branch,
-}: FileExplorerHeaderProps) => {
+const FileExplorerHeader = ({ summary, branch }: FileExplorerHeaderProps) => {
   return (
     <div className="Box-header relative">
       <h2 className="sr-only">Latest commit</h2>
@@ -35,8 +23,8 @@ const FileExplorerHeader = ({
               >
                 <Image
                   className="rounded-[50%]"
-                  src={commitAuthorAvatarUrl}
-                  alt={commitAuthor}
+                  src={summary.commitAuthorAvatarUrl}
+                  alt={summary.commitAuthor}
                   width={24}
                   height={24}
                 />
@@ -50,21 +38,21 @@ const FileExplorerHeader = ({
               className="whitespace-nowrap font-semibold text-[#e6edf3]"
               href="#"
             >
-              {commitAuthor}
+              {summary.commitAuthor}
             </Link>{' '}
             <span className="hidden sm:inline">
               <Link className="text-[#e6edf3]" href="#">
-                {lastCommitMessage}
+                {summary.lastCommitMessage}
               </Link>
             </span>
           </div>
         </div>
         <div className="ml-4 flex items-baseline justify-end  text-xs">
           <Link className="ml-2 hidden text-[#7d8590] lg:inline" href="#">
-            {shortCommitHash}
+            {summary.shortCommitHash}
           </Link>
           <Link className="ml-2 hidden text-[#7d8590] lg:inline" href="#">
-            {getPastDate(lastCommittedDate)}
+            {getPastDate(summary.lastCommittedDate)}
           </Link>
         </div>
         <div className="shrink-0">
@@ -77,7 +65,7 @@ const FileExplorerHeader = ({
               >
                 <Icon name="history" className="icon" size={16} />{' '}
                 <span className="hidden sm:inline">
-                  <strong>{totalCommits}</strong>{' '}
+                  <strong>{summary.totalCommits}</strong>{' '}
                   <span
                     aria-label={`Commits on ${branch}`}
                     className="none text-[#7d8590] lg:inline"
