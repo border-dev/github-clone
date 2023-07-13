@@ -32,7 +32,7 @@ export type RepoHomeFileExplorer = {
   files: ExplorerLineItemCommitHistory[];
 };
 
-const sortFiles = (files: ExplorerLineItem[]) =>
+export const sortFiles = (files: ExplorerLineItem[]) =>
   files.sort((a, b) => {
     if (a.type === 'tree' && b.type !== 'tree') {
       return -1;

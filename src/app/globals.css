@@ -38,6 +38,14 @@ body {
   .icon {
     @apply inline-block overflow-visible fill-current align-text-bottom;
   }
+
+  .util-btn-outline {
+    @apply inline-grid h-[32px] w-[32px] min-w-max place-content-center gap-1 rounded-md text-xs text-[#7d8590] transition-[80ms] hover:bg-[#30363d];
+  }
+
+  .util-btn {
+    @apply flex h-[32px] min-w-max items-center justify-between gap-2 rounded-md border border-[#f0f6fc1a] bg-[#21262d] px-3 text-sm text-[#c9d1d9] transition-[80ms] hover:border-[#8b949e] hover:bg-[#30363d];
+  }
 }
 
 article,
@@ -366,4 +374,8 @@ header nav ul li:last-child {
   display: table;
   clear: both;
   content: '';
+}
+
+.grid-template-areas-text-trailing {
+  grid-template-areas: 'leadingVisual text trailingVisual';
 }
