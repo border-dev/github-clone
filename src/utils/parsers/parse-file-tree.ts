@@ -1,5 +1,5 @@
 import { Commit, FileTreeQuery, GitActor, Tree } from '@lib/generated/graphql';
-import { parseLineItems } from '../../components/modules/RepoHomeFileExplorer/parse-file-explorer';
+import { parseLineItems } from './parse-file-explorer';
 
 export const parseFileTree = (data?: FileTreeQuery) => {
   const latestCommit = data?.repository?.ref?.target as Commit;

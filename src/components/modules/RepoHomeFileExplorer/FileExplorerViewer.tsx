@@ -1,5 +1,5 @@
+import { ExplorerLineItemCommitHistory } from '@utils/parsers/types/FileExplorer';
 import FileExplorerLineItem from './FileExplorerLineItem';
-import { ExplorerLineItemCommitHistory } from './parse-file-explorer';
 
 type FileExplorerViewerProps = {
   owner: string;

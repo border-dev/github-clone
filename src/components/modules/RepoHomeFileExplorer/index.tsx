@@ -2,11 +2,11 @@
 
 import { useFileExplorerQuery } from '@lib/generated/graphql';
 import graphqlClient from '@lib/graphql-client';
+import { parseFileExplorer } from '@utils/parsers/parse-file-explorer';
+import { useMemo } from 'react';
 import FileExplorerHeader from './FileExplorerHeader';
 import FileExplorerNavigation from './FileExplorerNavigation';
 import FileExplorerViewer from './FileExplorerViewer';
-import { parseFileExplorer } from './parse-file-explorer';
-import { useMemo } from 'react';
 
 type RepoHomeFileExplorerProps = {
   owner: string;

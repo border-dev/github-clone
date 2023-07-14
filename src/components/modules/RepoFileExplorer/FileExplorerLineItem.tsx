@@ -1,6 +1,6 @@
 import Icon from '@components/atoms/Icon';
 import Link from '@components/atoms/Link';
-import { ExplorerLineItem } from '../RepoHomeFileExplorer/parse-file-explorer';
+import { ExplorerLineItem } from '@utils/parsers/types/FileExplorer';
 
 type FileExplorerLineItemProps = {
   owner: string;
