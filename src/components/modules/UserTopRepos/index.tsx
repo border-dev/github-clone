@@ -1,10 +1,10 @@
 'use client';
 
+import Link from '@components/atoms/Link';
 import { useUserTopReposQuery } from '@lib/generated/graphql';
 import graphqlClient from '@lib/graphql-client';
+import { parseTopReposQuery } from '@utils/parsers/parse-user-top-repos';
 import Image from 'next/image';
-import Link from '../../atoms/Link';
-import { parseTopReposQuery } from './parse-top-repos-query';
 
 const UserTopRepos = () => {
   const { data, error, isLoading } = useUserTopReposQuery(graphqlClient);
