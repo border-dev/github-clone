@@ -7,7 +7,7 @@ import FileExplorerHeader from './FileExplorerHeader';
 import FileExplorerNavigation from './FileExplorerNavigation';
 import FileExplorerViewer from './FileExplorerViewer';
 
-type RepoFileExplorerProps = {
+type RepoTreeExplorerProps = {
   owner: string;
   name: string;
   branch: string;
@@ -15,13 +15,13 @@ type RepoFileExplorerProps = {
   path: string;
 };
 
-const RepoFileExplorer = ({
+const RepoTreeExplorer = ({
   owner,
   name,
   branch,
   revision,
   path,
-}: RepoFileExplorerProps) => {
+}: RepoTreeExplorerProps) => {
   const { data, error, isLoading } = useFileTreeQuery(graphqlClient, {
     owner,
     name,
@@ -51,4 +51,4 @@ const RepoFileExplorer = ({
   );
 };
 
-export default RepoFileExplorer;
+export default RepoTreeExplorer;
