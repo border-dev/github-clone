@@ -4,11 +4,11 @@ import Icon from '@components/atoms/Icon';
 import Link from '@components/atoms/Link';
 import { useRepoHomeReadMeQuery } from '@lib/generated/graphql';
 import graphqlClient from '@lib/graphql-client';
+import { parseRepoReadmeQuery } from '@utils/parsers/parse-repo-home-readme';
 import { usePathname } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import rehype from 'rehype-raw';
 import remark from 'remark-gfm';
-import { parseRepoReadmeQuery } from './parse-repo-home-readme';
 
 type RepoHomeReadMeProps = {
   owner: string;

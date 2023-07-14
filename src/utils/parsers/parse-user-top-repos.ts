@@ -1,22 +1,9 @@
 import { UserTopReposQuery } from '@lib/generated/graphql';
+import { UserTopRepo } from './types/UserTopRepo';
 
-export interface TopRepo {
-  id: string;
-  name: string;
-  description?: string | null;
-  owner: string;
-  ownerAvatar: string;
-  language?: string | null;
-  languageColor?: string | null;
-  isPrivate: boolean;
-  stargazerCount: number;
-  forkCount: number;
-  updatedAt: Date;
-}
-
-export function parseTopReposQuery(data: UserTopReposQuery): TopRepo[] {
+export function parseTopReposQuery(data: UserTopReposQuery): UserTopRepo[] {
   const repos = data.viewer.topRepositories.nodes ?? [];
-  return repos.reduce((acc: TopRepo[], repo) => {
+  return repos.reduce((acc: UserTopRepo[], repo) => {
     if (!repo) {
       return acc;
     }

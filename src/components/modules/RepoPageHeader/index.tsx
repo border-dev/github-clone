@@ -1,5 +1,5 @@
 import Link from '@components/atoms/Link';
-import { Repo } from '@components/organisms/RepoHome/parse-repo';
+import { Repo } from '@utils/parsers/parse-repo';
 import Image from 'next/image';
 
 type RepoPageHeaderProps = {

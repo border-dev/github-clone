@@ -1,8 +1,8 @@
 import Icon from '@components/atoms/Icon';
 import Link from '@components/atoms/Link';
 import { getPastDate } from '@utils/date-formatter';
+import { CommitSummary } from '@utils/parsers/types/FileExplorer';
 import Image from 'next/image';
-import { CommitSummary } from './parse-file-explorer';
 
 type FileExplorerHeaderProps = {
   summary: CommitSummary;

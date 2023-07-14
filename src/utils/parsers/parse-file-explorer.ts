@@ -5,34 +5,12 @@ import {
   Tree,
   TreeEntry,
 } from '@lib/generated/graphql';
+import {
+  ExplorerLineItem,
+  ExplorerLineItemCommitHistory,
+} from './types/FileExplorer';
 
-export type ExplorerLineItem = {
-  name: string;
-  path: string;
-  type: string;
-  oid: string;
-};
-
-export type ExplorerLineItemCommitHistory = ExplorerLineItem & {
-  messageHeadline: string;
-  committedDate: string;
-};
-
-export type CommitSummary = {
-  shortCommitHash: string;
-  lastCommitMessage: string;
-  lastCommittedDate: any;
-  commitAuthor: string;
-  commitAuthorAvatarUrl: any;
-  totalCommits: number;
-};
-
-export type RepoHomeFileExplorer = {
-  latestCommitSummary: CommitSummary;
-  files: ExplorerLineItemCommitHistory[];
-};
-
-const sortFiles = (files: ExplorerLineItem[]) =>
+export const sortFiles = (files: ExplorerLineItem[]) =>
   files.sort((a, b) => {
     if (a.type === 'tree' && b.type !== 'tree') {
       return -1;
@@ -102,9 +80,7 @@ const pullFilesEarliestCommitInfo = (
   });
 };
 
-export const parseFileExplorer = (
-  data?: FileExplorerQuery,
-): RepoHomeFileExplorer => {
+export const parseFileExplorer = (data?: FileExplorerQuery) => {
   const latestCommit = data?.repository?.defaultBranchRef?.target as Commit;
   const author = latestCommit.author as GitActor | undefined;
 
