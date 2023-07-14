@@ -3,11 +3,7 @@ import {
   Organization,
   RepoPageQuery,
 } from '@lib/generated/graphql';
-
-export type Language = {
-  name: string;
-  color: string;
-};
+import { Language } from './types/Language';
 
 export type Repo = {
   isOrg: boolean;

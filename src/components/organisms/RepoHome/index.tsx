@@ -7,7 +7,7 @@ import RepoHomeReadMe from '@components/modules/RepoHomeReadMe';
 import RepoPageHeader from '@components/modules/RepoPageHeader';
 import { useRepoPageQuery } from '@lib/generated/graphql';
 import graphqlClient from '@lib/graphql-client';
-import { parseRepo } from './parse-repo';
+import { parseRepo } from '@utils/parsers/parse-repo';
 
 type RepoPageProps = {
   owner: string;

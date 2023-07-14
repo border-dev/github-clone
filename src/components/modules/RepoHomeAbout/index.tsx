@@ -1,6 +1,6 @@
 import Icon from '@components/atoms/Icon';
 import Link from '@components/atoms/Link';
-import { Language } from '@components/organisms/RepoHome/parse-repo';
+import { Language } from '@utils/parsers/types/Language';
 import Contributors from './Contributors';
 import Description from './Description';
 import HomepageUrl from './HomepageUrl';
