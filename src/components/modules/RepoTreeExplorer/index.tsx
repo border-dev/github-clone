@@ -3,8 +3,8 @@
 import { useFileTreeQuery } from '@lib/generated/graphql';
 import graphqlClient from '@lib/graphql-client';
 import { parseFileTree } from '@utils/parsers/parse-file-tree';
+import FileExplorerNavigation from '../FileExplorerNavigation';
 import FileExplorerHeader from './FileExplorerHeader';
-import FileExplorerNavigation from './FileExplorerNavigation';
 import FileExplorerViewer from './FileExplorerViewer';
 
 type RepoTreeExplorerProps = {
