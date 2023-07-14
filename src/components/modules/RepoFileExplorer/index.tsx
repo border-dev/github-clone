@@ -2,10 +2,10 @@
 
 import { useFileTreeQuery } from '@lib/generated/graphql';
 import graphqlClient from '@lib/graphql-client';
-import FileExplorerNavigation from './FileExplorerNavigation';
+import { parseFileTree } from '@utils/parsers/parse-file-tree';
 import FileExplorerHeader from './FileExplorerHeader';
+import FileExplorerNavigation from './FileExplorerNavigation';
 import FileExplorerViewer from './FileExplorerViewer';
-import { parseFileTree } from './parse-file-tree';
 
 type RepoFileExplorerProps = {
   owner: string;
