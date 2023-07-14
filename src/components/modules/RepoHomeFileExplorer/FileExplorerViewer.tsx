@@ -1,4 +1,4 @@
-import FileExplorerLineItem from '../FileExplorerLineItem';
+import FileExplorerLineItem from './FileExplorerLineItem';
 import { ExplorerLineItemCommitHistory } from './parse-file-explorer';
 
 type FileExplorerViewerProps = {
