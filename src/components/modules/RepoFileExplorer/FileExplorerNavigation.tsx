@@ -3,19 +3,19 @@ import BreadCrumbs from '@components/atoms/BreadCrumbs';
 import RepoActionsSelector from '@components/atoms/RepoActionsSelector';
 import SidePanelCollapseButton from '@components/atoms/SidePanelCollapseButton';
 
-type RepoFileViewerPageNavigationProps = {
+type FileExplorerNavigationProps = {
   owner: string;
   name: string;
   branch: string;
   path: string;
 };
 
-const RepoFileViewerPageNavigation = ({
+const FileExplorerNavigation = ({
   owner,
   name,
   branch,
   path,
-}: RepoFileViewerPageNavigationProps) => (
+}: FileExplorerNavigationProps) => (
   <div>
     <div className="px-4 pt-4">
       <div className="flex flex-col gap-2">
@@ -40,4 +40,4 @@ const RepoFileViewerPageNavigation = ({
   </div>
 );
 
-export default RepoFileViewerPageNavigation;
+export default FileExplorerNavigation;

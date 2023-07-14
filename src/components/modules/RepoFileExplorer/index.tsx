@@ -2,7 +2,7 @@
 
 import { useFileTreeQuery } from '@lib/generated/graphql';
 import graphqlClient from '@lib/graphql-client';
-import RepoFileViewerPageNavigation from '../RepoFileViewerPageNavigation';
+import FileExplorerNavigation from './FileExplorerNavigation';
 import FileExplorerHeader from './FileExplorerHeader';
 import FileExplorerViewer from './FileExplorerViewer';
 import { parseFileTree } from './parse-file-tree';
@@ -41,11 +41,11 @@ const RepoFileExplorer = ({
 
   return (
     <>
-      <RepoFileViewerPageNavigation {...{ owner, name, branch, path }} />
+      <FileExplorerNavigation {...{ owner, name, branch, path }} />
       <div className="mx-4 mb-4"></div>
       <div className="mx-4">
         <FileExplorerHeader summary={explorer.latestCommitSummary} />
-        <FileExplorerViewer />
+        <FileExplorerViewer {...{ owner, name, branch, files }} />
       </div>
     </>
   );

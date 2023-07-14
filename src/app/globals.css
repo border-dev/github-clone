@@ -46,6 +46,10 @@ body {
   .util-btn {
     @apply flex h-[32px] min-w-max items-center justify-between gap-2 rounded-md border border-[#f0f6fc1a] bg-[#21262d] px-3 text-sm text-[#c9d1d9] transition-[80ms] hover:border-[#8b949e] hover:bg-[#30363d];
   }
+
+  td {
+    @apply border-t border-[#30363d] pl-4 text-left;
+  }
 }
 
 article,
@@ -362,6 +366,15 @@ header nav ul li:last-child {
   height: 8px;
   outline: 1px solid #0000;
   overflow: hidden;
+}
+
+.directory-filename-column {
+  display: flex;
+  height: 40px;
+  padding-right: 16px;
+  align-items: center;
+  row-gap: 4px;
+  column-gap: 10px;
 }
 
 .file-nav::before,
