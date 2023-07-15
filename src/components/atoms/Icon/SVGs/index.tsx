@@ -10,6 +10,7 @@ export { CodeSimple } from './code-simple';
 export { Copy } from './copy';
 export { Directory } from './directory';
 export { DotFill } from './dot-fill';
+export { Download } from './download';
 export { Eye } from './eye';
 export { File } from './file';
 export { Forked } from './forked';
