@@ -6,9 +6,10 @@ export const FILE_TREE_QUERY = gql`
     $name: String!
     $path: String!
     $expression: String!
+    $branch: String!
   ) {
     repository(owner: $owner, name: $name) {
-      ref(qualifiedName: "main") {
+      ref(qualifiedName: $branch) {
         target {
           ... on Commit {
             history(path: $path, first: 1) {

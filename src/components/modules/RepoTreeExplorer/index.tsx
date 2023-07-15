@@ -27,6 +27,7 @@ const RepoTreeExplorer = ({
     name,
     path,
     expression: `${revision}:${path}`,
+    branch,
   });
 
   if (isLoading) {
