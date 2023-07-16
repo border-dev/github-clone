@@ -1,6 +1,7 @@
 import NavBar from '@components/organisms/NavBar';
 import Providers from '@components/organisms/Providers';
 import './globals.css';
+import './prism-theme.css';
 
 export const metadata = {
   title: 'Create Next App',

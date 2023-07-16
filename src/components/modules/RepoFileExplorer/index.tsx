@@ -3,7 +3,6 @@
 import { useRepoFileQuery } from '@lib/generated/graphql';
 import graphqlClient from '@lib/graphql-client';
 import { parseFileViewer } from '@utils/parsers/parse-file-viewer';
-import { useMemo } from 'react';
 import FileExplorerHeader from '../FileExplorerHeader';
 import FileExplorerNavigation from '../FileExplorerNavigation';
 import File from './File';
@@ -23,7 +22,6 @@ const RepoFileExplorer = ({
   revision,
   path,
 }: RepoFileExplorerProps) => {
-  const getDate = useMemo(() => new Date().toISOString(), []);
   const decodedPath = decodeURI(path);
   const { data, error, isLoading } = useRepoFileQuery(graphqlClient, {
     owner,
@@ -42,6 +40,7 @@ const RepoFileExplorer = ({
   }
 
   const { file, ...explorer } = parseFileViewer(decodedPath, data);
+  const basePath = `/${owner}/${name}`;
 
   return (
     <>
@@ -49,7 +48,7 @@ const RepoFileExplorer = ({
       <div className="mx-4 mb-4"></div>
       <div className="mx-4">
         <FileExplorerHeader summary={explorer.latestCommitSummary} />
-        <File file={file} />
+        <File basePath={basePath} branch={branch} path={path} file={file} />
       </div>
     </>
   );

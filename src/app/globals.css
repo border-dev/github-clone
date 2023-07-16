@@ -51,23 +51,11 @@ body {
     @apply border-t border-[#30363d] pl-4 text-left;
   }
 
-  .file-action-item::after {
-    @apply absolute bottom-2 right-[-2px] top-2 w-[1px] bg-transparent content-[''];
-  }
-
-  .file-action-padded-item::after {
-    @apply absolute bottom-2 right-[-2px] top-2 w-[1px] bg-[#30363d] content-[''];
-  }
-
-  .file-preview-btn {
+  .file-action-left-btn {
     @apply h-full w-full cursor-pointer rounded-md border-0 border-transparent bg-transparent font-semibold text-current hover:bg-[#30363d];
   }
 
-  .file-preview-padded-btn {
-    @apply h-full w-full cursor-pointer rounded-md border-0 border-transparent bg-transparent p-1 font-semibold text-current hover:bg-[#30363d];
-  }
-
-  .file-action-btn {
+  .file-action-right-btn {
     @apply flex h-8 max-w-max cursor-pointer select-none appearance-none items-center justify-between gap-2 rounded-md border border-[#f0f6fc1a] bg-[#21262d] px-2 text-center text-sm font-medium text-[#c9d1d9] hover:border-[#8b949e] hover:bg-[#30363d];
     box-shadow: transparent 0px 0px, transparent 0px 0px;
     transition: color 80ms cubic-bezier(0.65, 0, 0.35, 1) 0s, fill,
