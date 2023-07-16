@@ -39,7 +39,7 @@ const FileExplorerLineItem = ({
           <div className="overflow-hidden">
             <h3 className="text-sm">
               <div className="inline-block max-w-full overflow-hidden text-ellipsis whitespace-pre align-text-top">
-                <Link href={`/${owner}/${name}/tree/${branch}/${path}`}>
+                <Link href={`/${owner}/${name}/${type}/${branch}/${path}`}>
                   {fileName}
                 </Link>
               </div>

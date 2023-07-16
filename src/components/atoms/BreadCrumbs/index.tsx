@@ -25,7 +25,7 @@ const BreadCrumbs = ({
           <li className="inline-block max-w-full">
             <Link
               className="font-semibold text-[#2f81f7] hover:underline"
-              href={`/${owner}/${name}/tree/${branch}`}
+              href={`/${owner}/${name}`}
             >
               {name}
             </Link>

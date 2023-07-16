@@ -1,18 +1,18 @@
 import RepoFileExplorer from '@components/modules/RepoFileExplorer';
 
-type RepoTreeBranchViewerProps = {
+type RepoFileViewerProps = {
   owner: string;
   name: string;
   branch?: string;
   path?: string;
 };
 
-const RepoTreeBranchViewer = ({
+const RepoFileViewer = ({
   owner,
   name,
   branch: branchPath,
   path: fullPath,
-}: RepoTreeBranchViewerProps) => {
+}: RepoFileViewerProps) => {
   const path = Array.isArray(fullPath)
     ? fullPath.join('/')
     : (fullPath as string);
@@ -37,4 +37,4 @@ const RepoTreeBranchViewer = ({
   );
 };
 
-export default RepoTreeBranchViewer;
+export default RepoFileViewer;

@@ -1,7 +1,7 @@
 import { gql } from 'graphql-request';
 
-export const FILE_TREE_QUERY = gql`
-  query FileTree(
+export const REPO_FILE_QUERY = gql`
+  query RepoFile(
     $owner: String!
     $name: String!
     $path: String!
@@ -9,6 +9,12 @@ export const FILE_TREE_QUERY = gql`
     $branch: String!
   ) {
     repository(owner: $owner, name: $name) {
+      blob: object(expression: $expression) {
+        ... on Blob {
+          byteSize
+          text
+        }
+      }
       ref(qualifiedName: $branch) {
         target {
           ... on Commit {
@@ -25,15 +31,6 @@ export const FILE_TREE_QUERY = gql`
                 committedDate
               }
             }
-          }
-        }
-      }
-      tree: object(expression: $expression) {
-        ... on Tree {
-          entries {
-            name
-            type
-            path
           }
         }
       }

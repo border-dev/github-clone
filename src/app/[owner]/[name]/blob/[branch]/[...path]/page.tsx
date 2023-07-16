@@ -1,4 +1,4 @@
-import RepoTreeViewer from '@components/organisms/RepoTreeViewer';
+import RepoFileViewer from '@components/organisms/RepoFileViewer';
 import { useRepoPageQuery } from '@lib/generated/graphql';
 import graphqlClient from '@lib/graphql-client';
 import { Hydrate, QueryClient, dehydrate } from '@tanstack/react-query';
@@ -29,7 +29,7 @@ export default async function RepoTreeBranchPageHydration({
 
   return (
     <Hydrate state={dehydratedState}>
-      <RepoTreeViewer {...{ ...variables, branch, path }} />
+      <RepoFileViewer {...{ ...variables, branch, path }} />
     </Hydrate>
   );
 }
