@@ -12,7 +12,7 @@ const HomeFeedFooter = () => {
             className="fill-dark mr-2 dark:fill-white"
             size={24}
           />
-          © 2023 GitHub, Inc.
+          clone made with ❤ by Morgan Worrell
         </Link>
       </div>
       <div className="">

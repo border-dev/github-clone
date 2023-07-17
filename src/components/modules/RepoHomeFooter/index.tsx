@@ -20,7 +20,7 @@ const RepoHomeFooter = () => {
             >
               <Icon name="github" size={24} />
             </Link>{' '}
-            <span>© 2023 GitHub, Inc.</span>
+            <span>clone made with ❤ by Morgan Worrell</span>
           </div>
         </div>
 
