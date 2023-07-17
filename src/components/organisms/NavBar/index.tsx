@@ -2,6 +2,9 @@
 
 import Icon from '@components/atoms/Icon';
 import Link from '@components/atoms/Link';
+import { useRepoPageQuery } from '@lib/generated/graphql';
+import graphqlClient from '@lib/graphql-client';
+import { parseRepo } from '@utils/parsers/parse-repo';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -15,7 +18,17 @@ const NavBar = () => {
   const image = session?.user?.image;
   const path = usePathname();
   const [, owner, name, currentPath] = path.split('/');
+  const { data, error, isLoading } = useRepoPageQuery(graphqlClient, {
+    owner,
+    name,
+  });
   const [isAvatarMenuOpen, setIsAvatarMenuOpen] = useState(false);
+
+  if (error || !data) {
+    return <div className="text-sm">Failed to load your repos.</div>;
+  }
+
+  const { repoCounts } = parseRepo(data);
 
   return (
     <div className="relative w-full">
@@ -71,9 +84,9 @@ const NavBar = () => {
             </div>
           </div>
         </div>
-        {owner && name && (
-          <RepoHeaderNav owner={owner} name={name} currentPath={currentPath} />
-        )}
+        {!isLoading ? (
+          <RepoHeaderNav {...{ owner, name, currentPath, repoCounts }} />
+        ) : null}
       </header>
     </div>
   );

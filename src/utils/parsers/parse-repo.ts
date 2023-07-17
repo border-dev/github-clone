@@ -5,15 +5,14 @@ import {
 } from '@lib/generated/graphql';
 import { Language } from './types/Language';
 
+export type RepoCount = { title: string; count: number };
+
 export type Repo = {
   isOrg: boolean;
   orgAvatarUrl: any;
   isPrivate: boolean;
-  stargazerCount: number;
-  forkCount: number;
-  watcherCount: number;
-  openIssueCount: number;
-  openPullRequestCount: number;
+  repoCounts: RepoCount[];
+  repoActivityCounts: RepoCount[];
   description?: string | null;
   homepageUrl: any;
   topics: string[];
@@ -36,7 +35,7 @@ type Topic =
   | null
   | undefined;
 
-export const parseRepo = (data: RepoPageQuery): Repo => {
+export const parseRepo = (data?: RepoPageQuery): Repo => {
   const repository = data?.repository!;
 
   const owner = data?.repository?.owner as Organization | undefined;
@@ -45,11 +44,30 @@ export const parseRepo = (data: RepoPageQuery): Repo => {
     isOrg: typeof owner?.name === 'string',
     orgAvatarUrl: owner?.avatarUrl,
     isPrivate: repository.isPrivate,
-    stargazerCount: repository.stargazerCount,
-    forkCount: repository.forkCount,
-    watcherCount: repository.watchers.totalCount,
-    openIssueCount: repository.issues.totalCount,
-    openPullRequestCount: repository.pullRequests.totalCount,
+    repoCounts: [
+      {
+        title: 'Issues',
+        count: repository.issues.totalCount,
+      },
+      {
+        title: 'Pull requests',
+        count: repository.pullRequests.totalCount,
+      },
+    ],
+    repoActivityCounts: [
+      {
+        title: 'Watchers',
+        count: repository.watchers.totalCount,
+      },
+      {
+        title: 'Forks',
+        count: repository.forkCount,
+      },
+      {
+        title: 'Stargazers',
+        count: repository.stargazerCount,
+      },
+    ],
     description: repository.description,
     homepageUrl: repository.homepageUrl,
     topics: parseRepoTopics(repository.topics?.nodes),
