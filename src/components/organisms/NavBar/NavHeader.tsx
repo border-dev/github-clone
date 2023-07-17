@@ -52,7 +52,7 @@ const NavHeader = ({ owner, name }: NavHeaderProps) => {
               <li>
                 <Link
                   href="/"
-                  className="grid h-12 w-full cursor-pointer items-center rounded-md bg-transparent text-left text-sm font-semibold text-inherit duration-[80ms] hover:bg-[#b1bac41f]"
+                  className="grid w-full cursor-pointer items-center rounded-md bg-transparent text-left text-sm font-semibold text-inherit duration-[80ms] hover:bg-[#b1bac41f]"
                 >
                   Dashboard
                 </Link>

@@ -11,6 +11,7 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import NavHeader from './NavHeader';
 import RepoHeaderNav from './RepoHeaderNav';
+import classNames from 'classnames';
 
 const NavBar = () => {
   const { data: session } = useSession();
@@ -18,22 +19,13 @@ const NavBar = () => {
   const image = session?.user?.image;
   const path = usePathname();
   const [, owner, name, currentPath] = path.split('/');
-  const { data, error, isLoading } = useRepoPageQuery(graphqlClient, {
-    owner,
-    name,
-  });
   const [isAvatarMenuOpen, setIsAvatarMenuOpen] = useState(false);
-
-  if (error || !data) {
-    return <div className="text-sm">Failed to load your repos.</div>;
-  }
-
-  const { repoCounts } = parseRepo(data);
+  const isRepoPath = Boolean(owner && name);
 
   return (
     <div className="relative w-full">
       <header className="header-shadow-b bg-[#010409] text-white">
-        <div className="flex gap-3 p-4 pb-2">
+        <div className={classNames('flex gap-3 p-4', isRepoPath ? 'pb-2' : '')}>
           <div className="flex flex-auto gap-2">
             <div>
               <button className="header-sidebar-btn btn--iconOnly btn--secondary">
@@ -84,9 +76,7 @@ const NavBar = () => {
             </div>
           </div>
         </div>
-        {!isLoading ? (
-          <RepoHeaderNav {...{ owner, name, currentPath, repoCounts }} />
-        ) : null}
+        <RepoHeaderNav {...{ owner, name, currentPath, isRepoPath }} />
       </header>
     </div>
   );

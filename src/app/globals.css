@@ -35,6 +35,14 @@ body {
     @apply bg-green-700 text-white;
   }
 
+  .btn-sm {
+    @apply border-[#f0f6fc1a] bg-[#21262d] px-3 py-[3px] text-xs font-medium leading-5 duration-100 hover:border-[#8b949e] hover:bg-[#30363d];
+  }
+
+  .btn-counter {
+    @apply ml-[2px] bg-[#30363d] align-top;
+  }
+
   .icon {
     @apply inline-block overflow-visible fill-current align-text-bottom;
   }
@@ -504,4 +512,8 @@ input[type='radio']:disabled {
   background-color: -internal-light-dark(#efefef4d, #3b3b3b4d);
   color: -internal-light-dark(#545454, #aaaaaa);
   border-color: #7676764d;
+}
+
+.pagehead-actions > li:last-child {
+  margin-right: 0;
 }

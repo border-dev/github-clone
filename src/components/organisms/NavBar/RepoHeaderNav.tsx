@@ -1,13 +1,15 @@
 import Icon from '@components/atoms/Icon';
 import { IconKeyNames } from '@components/atoms/Icon/icons-map';
-import { RepoCount } from '@utils/parsers/parse-repo';
+import { useRepoPageQuery } from '@lib/generated/graphql';
+import graphqlClient from '@lib/graphql-client';
+import { RepoCount, parseRepo } from '@utils/parsers/parse-repo';
 import Link from 'next/link';
 
 type RepoHeaderNavProps = {
   owner: string;
   name: string;
   currentPath: string;
-  repoCounts: any;
+  isRepoPath: boolean;
 };
 
 const generateHref = (basePath: string, path?: string) =>
@@ -67,8 +69,23 @@ const RepoHeaderNav = ({
   owner,
   name,
   currentPath,
-  repoCounts,
+  isRepoPath,
 }: RepoHeaderNavProps) => {
+  const { data, error, isLoading } = useRepoPageQuery(
+    graphqlClient,
+    {
+      owner,
+      name,
+    },
+    { enabled: isRepoPath },
+  );
+
+  if (error || !data) {
+    return null;
+  }
+
+  const { repoCounts } = parseRepo(data);
+
   return (
     <div className="px-4">
       <nav className="flex min-h-[3rem] justify-between overflow-hidden shadow-[inset_0_-1px_#21262d]">

@@ -1,5 +1,8 @@
+import ButtonDropdownCaret from '@components/atoms/ButtonDropdownCaret';
+import Icon from '@components/atoms/Icon';
+import { IconKeyNames } from '@components/atoms/Icon/icons-map';
 import Link from '@components/atoms/Link';
-import { Repo } from '@utils/parsers/parse-repo';
+import { Repo, RepoCount } from '@utils/parsers/parse-repo';
 import Image from 'next/image';
 
 type RepoPageHeaderProps = {
@@ -7,6 +10,44 @@ type RepoPageHeaderProps = {
   owner: string;
   name: string;
 };
+
+type SecondaryHeaderLinks = {
+  title: string;
+  action: string;
+  iconName: IconKeyNames;
+};
+
+const secondaryHeaderLinks: SecondaryHeaderLinks[] = [
+  {
+    title: 'Watchers',
+    action: 'Unwatch',
+    iconName: 'eye',
+  },
+  {
+    title: 'Forks',
+    action: 'Fork',
+    iconName: 'repo-forked',
+  },
+  {
+    title: 'Stargazers',
+    action: 'Star',
+    iconName: 'star-outline',
+  },
+];
+
+const mapCountToButton = (repoCounts: RepoCount[]) =>
+  secondaryHeaderLinks.map((btn) => {
+    const { count } = repoCounts.find(({ title }) => btn.title === title) ?? {
+      title: '',
+      action: '',
+      count: 0,
+    };
+
+    return {
+      ...btn,
+      count,
+    };
+  });
 
 const RepoPageHeader = ({ repo, owner, name }: RepoPageHeaderProps) => {
   return (
@@ -33,9 +74,45 @@ const RepoPageHeader = ({ repo, owner, name }: RepoPageHeaderProps) => {
           <div className="hidden md:block"></div>
         </div>
         <div>
-          <ul className="py-[2px] md:inline">
+          <ul className="pagehead-actions py-[2px] md:inline">
             {/* TODO: add pins, watches, forks, and stars */}
-            {/* <li className='float-left mr-2 text-xs text-[#e6edf3]'></li> */}
+            <li className="float-left mr-2 text-xs text-[#e6edf3]">
+              <div className="block">
+                <div className="float-left">
+                  <div className="btn btn-sm">
+                    <Icon
+                      className="icon mr-2 fill-[#7d8590] align-text-top"
+                      name="pin"
+                      size={16}
+                    />
+                    Edit Pins <ButtonDropdownCaret />
+                  </div>
+                </div>
+              </div>
+            </li>
+            {mapCountToButton(repo.repoActivityCounts).map(
+              ({ title, action, count, iconName }) => (
+                <li
+                  key={title}
+                  className="float-left mr-2 text-xs text-[#c8d1d9]"
+                >
+                  <div className="relative block text-sm">
+                    <div className="relative block text-sm">
+                      <div className="btn btn-sm">
+                        <Icon
+                          className="icon mr-2 fill-[#7d8590] align-text-top"
+                          name={iconName}
+                          size={16}
+                        />
+                        {action}{' '}
+                        <div className="Counter btn-counter">{count}</div>
+                        <ButtonDropdownCaret />
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              ),
+            )}
           </ul>
         </div>
       </div>
