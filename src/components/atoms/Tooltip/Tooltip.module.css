@@ -1,0 +1,15 @@
+@tailwind utilities;
+
+/* Tooltip container */
+.tooltip {
+  @apply relative inline-block h-full;
+}
+
+.tooltip .tooltipText {
+  @apply invisible absolute bottom-[120%] left-[-105%] z-[1] min-w-[80px] items-center rounded-md bg-[#555] p-[5px] text-center text-xs text-white opacity-0 transition-opacity
+  duration-300 after:absolute after:left-1/2 after:top-full after:border-[5px] after:border-solid after:border-[#555_transparent_transparent_transparent] after:content-[''];
+}
+
+.tooltip:hover .tooltipText {
+  @apply visible opacity-100;
+}
