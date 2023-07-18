@@ -12,8 +12,10 @@ type ActionHeaderProps = {
   lines: number;
   /* Enable preview mode if file is markdown */
   isPreview: boolean;
+  isTextCopied: boolean;
   /* Toggle preview mode if file is markdown */
   togglePreview: Dispatch<SetStateAction<boolean>>;
+  onCopy: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 const ActionHeader = ({
@@ -23,7 +25,9 @@ const ActionHeader = ({
   byteSize,
   lines,
   isPreview,
+  isTextCopied,
   togglePreview,
+  onCopy,
 }: ActionHeaderProps) => {
   const pathName = usePathname();
   const filePath = `${basePath}/blob/${branch}/${path}`;
@@ -114,9 +118,17 @@ const ActionHeader = ({
                     </span>
                   </span>
                 </Link>
-                <button className="file-action-right-btn relative inline-grid h-7 w-7 place-content-center gap-1 rounded-none text-xs">
-                  <Icon className="icon" name="copy" size={16} />
-                </button>
+                <span className="tooltip">
+                  <span className="tooltiptext text-xs">
+                    {isTextCopied ? 'Copied!' : 'Copy raw file'}
+                  </span>
+                  <button
+                    onClick={onCopy}
+                    className="file-action-right-btn relative inline-grid h-7 w-7 place-content-center gap-1 rounded-none text-xs"
+                  >
+                    <Icon className="icon" name="copy" size={16} />
+                  </button>
+                </span>
                 <span className="relative rounded-br-md rounded-tr-md">
                   <button className="file-action-right-btn inline-grid h-7 w-7 place-content-center gap-1 rounded-bl-none rounded-tl-none text-xs">
                     <Icon className="icon" name="download" size={16} />
